@@ -1,10 +1,9 @@
 //
-//  LoadMoreTableFooterView.h
-//
-//  Created by Devin Doty on 10/14/09.
-//  Rewritten by Marius Rackwitz on 10/18/12.
-//  Copyright 2009 enormego. All rights reserved.
+//  PullTableSideView+Protected.h
 //  
+//  Created by Marius Rackwitz on 10/18/12.
+//  Copyright 2012 Marius Rackwitz.
+//
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
 //  in the Software without restriction, including without limitation the rights
@@ -27,6 +26,30 @@
 #import "PullTableSideView.h"
 
 
-@interface LoadMoreTableFooterView : PullTableSideView
+#define PULL_TABLE_ABSTRACT_SEL { \
+    @throw [NSException exceptionWithName:NSInternalInconsistencyException reason: \
+        [NSString stringWithFormat:@"%@ has to be overwritten!", _cmd]];\
+    }
+
+
+static inline UIEdgeInsets UIEdgeInsetsSetTop(UIEdgeInsets insets, CGFloat top) {
+    insets.top = top;
+    return insets;
+}
+
+static inline UIEdgeInsets UIEdgeInsetsSetBottom(UIEdgeInsets insets, CGFloat bottom) {
+    insets.bottom = bottom;
+    return insets;
+}
+
+
+@interface PullTableSideView (Protected)
+
+- (CGFloat)innerViewsCenterY;
+- (CGFloat)scrollViewCurrentOffsetFromSide:(UIScrollView *)scrollView;
+- (CGFloat)scrollViewOuterOffsetForSide:(UIScrollView *)scrollView;
+- (void)scrollView:(UIScrollView *)scrollView setContentInsetSideTo:(CGFloat)value;
+- (CGFloat)rotationForState:(PullTableState)aState;
+- (void)setState:(PullTableState)state;
 
 @end
