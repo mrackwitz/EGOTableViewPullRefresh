@@ -28,7 +28,7 @@
 
 #define PULL_TABLE_ABSTRACT_SEL { \
     @throw [NSException exceptionWithName:NSInternalInconsistencyException reason: \
-        [NSString stringWithFormat:@"%@ has to be overwritten!", _cmd]];\
+        [NSString stringWithFormat:@"%@ has to be overwritten!", _cmd]  userInfo:nil];\
     }
 
 

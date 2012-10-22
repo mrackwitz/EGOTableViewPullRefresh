@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C311998F15A5CE47006733DB /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = C311997F15A5CE47006733DB /* EGORefreshTableHeaderView.m */; };
+		20B64B6F1635466500EBA324 /* NSDate+LastUpdatedTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B64B661635456E00EBA324 /* NSDate+LastUpdatedTime.m */; };
+		20B64B701635466800EBA324 /* RefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B64B681635456E00EBA324 /* RefreshTableHeaderView.m */; };
+		20B64B73163546A400EBA324 /* PullTableSideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B64B72163546A400EBA324 /* PullTableSideView.m */; };
 		C311999015A5CE47006733DB /* LoadMoreTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = C311998115A5CE47006733DB /* LoadMoreTableFooterView.m */; };
 		C311999115A5CE47006733DB /* MessageInterceptor.m in Sources */ = {isa = PBXBuildFile; fileRef = C311998315A5CE47006733DB /* MessageInterceptor.m */; };
 		C311999215A5CE47006733DB /* PullTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = C311998515A5CE47006733DB /* PullTableView.m */; };
@@ -32,8 +34,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C311997E15A5CE47006733DB /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
-		C311997F15A5CE47006733DB /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		20B64B651635456E00EBA324 /* NSDate+LastUpdatedTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+LastUpdatedTime.h"; sourceTree = "<group>"; };
+		20B64B661635456E00EBA324 /* NSDate+LastUpdatedTime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LastUpdatedTime.m"; sourceTree = "<group>"; };
+		20B64B671635456E00EBA324 /* RefreshTableHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RefreshTableHeaderView.h; sourceTree = "<group>"; };
+		20B64B681635456E00EBA324 /* RefreshTableHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RefreshTableHeaderView.m; sourceTree = "<group>"; };
+		20B64B71163546A300EBA324 /* PullTableSideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullTableSideView.h; sourceTree = "<group>"; };
+		20B64B72163546A400EBA324 /* PullTableSideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullTableSideView.m; sourceTree = "<group>"; };
+		20B64B74163546DA00EBA324 /* PullTableSideView+Protected.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PullTableSideView+Protected.h"; sourceTree = "<group>"; };
 		C311998015A5CE47006733DB /* LoadMoreTableFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadMoreTableFooterView.h; sourceTree = "<group>"; };
 		C311998115A5CE47006733DB /* LoadMoreTableFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadMoreTableFooterView.m; sourceTree = "<group>"; };
 		C311998215A5CE47006733DB /* MessageInterceptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageInterceptor.h; sourceTree = "<group>"; };
@@ -93,8 +100,13 @@
 		C311997D15A5CE47006733DB /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				C311997E15A5CE47006733DB /* EGORefreshTableHeaderView.h */,
-				C311997F15A5CE47006733DB /* EGORefreshTableHeaderView.m */,
+				20B64B651635456E00EBA324 /* NSDate+LastUpdatedTime.h */,
+				20B64B661635456E00EBA324 /* NSDate+LastUpdatedTime.m */,
+				20B64B671635456E00EBA324 /* RefreshTableHeaderView.h */,
+				20B64B681635456E00EBA324 /* RefreshTableHeaderView.m */,
+				20B64B71163546A300EBA324 /* PullTableSideView.h */,
+				20B64B74163546DA00EBA324 /* PullTableSideView+Protected.h */,
+				20B64B72163546A400EBA324 /* PullTableSideView.m */,
 				C311998015A5CE47006733DB /* LoadMoreTableFooterView.h */,
 				C311998115A5CE47006733DB /* LoadMoreTableFooterView.m */,
 				C311998215A5CE47006733DB /* MessageInterceptor.h */,
@@ -199,6 +211,9 @@
 /* Begin PBXProject section */
 		C3292AA6142776BF009428B5 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
 			buildConfigurationList = C3292AA9142776BF009428B5 /* Build configuration list for PBXProject "EGOTableViewPullRefreshDemo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -245,10 +260,12 @@
 				C3292AC0142776BF009428B5 /* main.m in Sources */,
 				C3292AC4142776BF009428B5 /* EGOTableViewPullRefreshDemoAppDelegate.m in Sources */,
 				C3292ACA142776C0009428B5 /* EGOTableViewPullRefreshDemoViewController.m in Sources */,
-				C311998F15A5CE47006733DB /* EGORefreshTableHeaderView.m in Sources */,
+				20B64B701635466800EBA324 /* RefreshTableHeaderView.m in Sources */,
+				20B64B6F1635466500EBA324 /* NSDate+LastUpdatedTime.m in Sources */,
 				C311999015A5CE47006733DB /* LoadMoreTableFooterView.m in Sources */,
 				C311999115A5CE47006733DB /* MessageInterceptor.m in Sources */,
 				C311999215A5CE47006733DB /* PullTableView.m in Sources */,
+				20B64B73163546A400EBA324 /* PullTableSideView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,7 +314,7 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -314,7 +331,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
@@ -330,6 +347,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EGOTableViewPullRefreshDemo/EGOTableViewPullRefreshDemo-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "EGOTableViewPullRefreshDemo/EGOTableViewPullRefreshDemo-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -341,6 +359,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "EGOTableViewPullRefreshDemo/EGOTableViewPullRefreshDemo-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "EGOTableViewPullRefreshDemo/EGOTableViewPullRefreshDemo-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
