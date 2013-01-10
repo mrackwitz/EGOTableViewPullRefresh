@@ -103,7 +103,7 @@
 }
 
 - (void)scrollView:(UIScrollView *)scrollView setContentInsetSideTo:(CGFloat)value {
-    scrollView.contentInset = UIEdgeInsetsSetTop(scrollView.contentInset, value);
+    scrollView.contentInset = PullTableUIEdgeInsetsSetTop(scrollView.contentInset, value);
 }
 
 - (CGFloat)rotationForState:(PullTableState)aState {

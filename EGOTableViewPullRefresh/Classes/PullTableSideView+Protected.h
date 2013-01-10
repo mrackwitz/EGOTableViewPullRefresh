@@ -32,12 +32,12 @@
     }
 
 
-static inline UIEdgeInsets UIEdgeInsetsSetTop(UIEdgeInsets insets, CGFloat top) {
+static inline UIEdgeInsets PullTableUIEdgeInsetsSetTop(UIEdgeInsets insets, CGFloat top) {
     insets.top = top;
     return insets;
 }
 
-static inline UIEdgeInsets UIEdgeInsetsSetBottom(UIEdgeInsets insets, CGFloat bottom) {
+static inline UIEdgeInsets PullTableUIEdgeInsetsSetBottom(UIEdgeInsets insets, CGFloat bottom) {
     insets.bottom = bottom;
     return insets;
 }

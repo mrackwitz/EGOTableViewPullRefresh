@@ -55,8 +55,8 @@
         layer.frame            = CGRectMake(25.0f, midY - 20.0f, 30.0f, 55.0f);
         layer.contentsGravity  = kCAGravityResizeAspect;
         #if _IPHONE_OS_VERSION_MAX_ALLOWED >= 40000
-            if ([[UIScreen mainScreen] respondsToSelector:@selector(scale)]) {
-                layer.contentsScale = [[UIScreen mainScreen] scale];
+            if ([UIScreen.mainScreen respondsToSelector:@selector(scale)]) {
+                layer.contentsScale = [UIScreen.mainScreen scale];
             }
         #endif
         [self.layer addSublayer:layer];

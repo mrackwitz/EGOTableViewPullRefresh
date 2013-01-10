@@ -43,7 +43,7 @@
         // => adjust to real bottom edge
         value += scrollView.bounds.size.height - MIN(scrollView.bounds.size.height, scrollView.contentSize.height);
     }
-    scrollView.contentInset = UIEdgeInsetsSetBottom(scrollView.contentInset, value);
+    scrollView.contentInset = PullTableUIEdgeInsetsSetBottom(scrollView.contentInset, value);
 }
 
 - (CGFloat)rotationForState:(PullTableState)aState {
