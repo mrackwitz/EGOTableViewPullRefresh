@@ -69,9 +69,9 @@
 # pragma mark - Custom view configuration
 
 - (void)config {
-    // Message interceptor to intercept scrollView delegate messages
+    /*// Message interceptor to intercept scrollView delegate messages
     delegateInterceptor = [MessageInterceptor messageInterceptorOver:self to:self.delegate];
-    super.delegate = (id)delegateInterceptor;
+    super.delegate = (id)delegateInterceptor;*/
     
     // Status properties
     pullTableIsRefreshing  = NO;
@@ -95,26 +95,25 @@
 
 #pragma mark - Empty view
 
-- (bool)tableViewHasRows {
-    NSArray* indexPathsForVisibleRows = self.indexPathsForVisibleRows;
-    return indexPathsForVisibleRows.count > 0;
+- (BOOL)hasRows {
+    return self.numberOfSections > 0 && [self numberOfRowsInSection:0];
 }
 
 - (void)updateEmptyPage {
-    emptyView.frame = (CGRect){CGPointZero, self.frame.size};
+    emptyView.frame = self.bounds;
     
-    const bool shouldShowEmptyView = self.tableViewHasRows;
-    const bool emptyViewShown      = emptyView.superview != nil;
+    const BOOL shouldShowEmptyView = !self.hasRows;
+    const BOOL emptyViewShown      = emptyView.superview != nil;
     
     if (shouldShowEmptyView == emptyViewShown) {
         return;
     }
     
-    CATransition* animation = [CATransition animation];
-    [animation setDuration:0.5];
-    [animation setType:kCATransitionFade];
-    [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn]];
-    [[self layer] addAnimation:animation forKey:kCATransitionReveal];
+    CATransition* animation = [CATransition new];
+    animation.duration       = 0.5;
+    animation.type           = kCATransitionFade;
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [self.layer addAnimation:animation forKey:kCATransitionReveal];
     
     if (shouldShowEmptyView) {
         savedSeparatorStyle = self.separatorStyle; 

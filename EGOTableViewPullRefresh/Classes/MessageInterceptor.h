@@ -34,7 +34,7 @@
 @property (nonatomic, assign) id receiver;
 @property (nonatomic, assign) id middleMan;
 
-+ (MessageInterceptor *)messageInterceptorOver:(id)middleMan to:(id)receiver;
++ (instancetype)messageInterceptorOver:(id)middleMan to:(id)receiver;
 
 @end
 

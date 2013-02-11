@@ -41,8 +41,8 @@ MessageInterceptor* InterceptMessages(id middleMan, id receiver) {
     return [MessageInterceptor messageInterceptorOver:middleMan to:receiver];
 }
 
-+ (MessageInterceptor *)messageInterceptorOver:(id)middleMan to:(id)receiver {
-    MessageInterceptor* messageInterceptor = [[MessageInterceptor alloc] init];
++ (instancetype)messageInterceptorOver:(id)middleMan to:(id)receiver {
+    MessageInterceptor* messageInterceptor = [self new];
     messageInterceptor.receiver  = receiver;
     messageInterceptor.middleMan = middleMan;
     return messageInterceptor;
