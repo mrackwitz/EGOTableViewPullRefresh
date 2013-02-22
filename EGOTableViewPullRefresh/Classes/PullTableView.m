@@ -38,6 +38,8 @@
 
 @implementation PullTableView
 
+@synthesize refreshView;
+@synthesize loadMoreView;
 @synthesize pullDelegate;
 @synthesize emptyView;
 @synthesize pullArrowImage;

@@ -30,6 +30,9 @@
 
 @implementation PullTableSideView : UIView
 
+@synthesize statusLabel;
+@synthesize arrowLayer;
+@synthesize activityView;
 @synthesize delegate;
 @synthesize state;
 

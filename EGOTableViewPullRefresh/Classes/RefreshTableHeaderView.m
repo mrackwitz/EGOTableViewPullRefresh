@@ -31,6 +31,8 @@
 
 @implementation RefreshTableHeaderView
 
+@synthesize lastUpdatedLabel;
+
 
 #pragma mark - Initialization
 

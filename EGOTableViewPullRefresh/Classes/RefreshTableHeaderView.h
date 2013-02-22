@@ -29,9 +29,9 @@
 #import "PullTableSideView.h"
 
 
-@interface RefreshTableHeaderView : PullTableSideView {
-	UILabel* lastUpdatedLabel;
-}
+@interface RefreshTableHeaderView : PullTableSideView
+
+@property (nonatomic, retain) UILabel* lastUpdatedLabel;
 
 - (void)refreshLastUpdatedDate;
 

@@ -51,7 +51,7 @@ typedef enum {
 
 
 @interface PullTableSideView : UIView {
-	UILabel*                 statusLabel;
+    UILabel*                 statusLabel;
 	CALayer*                 arrowLayer;
 	UIActivityIndicatorView* activityView;
     
@@ -59,6 +59,10 @@ typedef enum {
     // is called and to NO with pullTableViewDataSourceDidFinishedLoading
     BOOL isLoading;
 }
+
+@property (nonatomic, retain) UILabel*                 statusLabel;
+@property (nonatomic, retain) CALayer*                 arrowLayer;
+@property (nonatomic, retain) UIActivityIndicatorView* activityView;
 
 @property(nonatomic, assign) NSObject<PullTableSideViewDelegate>* delegate;
 @property(nonatomic, assign) PullTableState state;
