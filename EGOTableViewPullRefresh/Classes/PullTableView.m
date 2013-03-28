@@ -71,9 +71,9 @@
 # pragma mark - Custom view configuration
 
 - (void)config {
-    /*// Message interceptor to intercept scrollView delegate messages
+    // Message interceptor to intercept scrollView delegate messages
     delegateInterceptor = [MessageInterceptor messageInterceptorOver:self to:self.delegate];
-    super.delegate = (id)delegateInterceptor;*/
+    super.delegate = (id)delegateInterceptor;
     
     // Status properties
     pullTableIsRefreshing  = NO;
