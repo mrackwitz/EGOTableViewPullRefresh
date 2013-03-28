@@ -102,7 +102,7 @@
 - (void)setState:(PullTableState)aState {
     switch (aState) {
         case PullTableStatePulling:
-            statusLabel.text  = NSLocalizedStringFromTable(@"Release to refresh...", @"PullTableViewLan", @"Release to refresh status");
+            statusLabel.text  = NSLocalizedStringFromTable(@"Release to refresh", @"PullTableViewLan", @"Release to refresh status");
             
             // Show arrow rotated by 180 degrees
             [CATransaction begin];
@@ -113,7 +113,7 @@
             break;
             
         case PullTableStateNormal:
-            statusLabel.text = NSLocalizedStringFromTable(@"Pull down to refresh...", @"PullTableViewLan", @"Pull down to refresh status");
+            statusLabel.text = NSLocalizedStringFromTable(@"Pull down to refresh", @"PullTableViewLan", @"Pull down to refresh status");
             
             const CATransform3D arrowLayerTransform = CATransform3DMakeRotation([self rotationForState:aState], 0.0f, 0.0f, 1.0f);
             
