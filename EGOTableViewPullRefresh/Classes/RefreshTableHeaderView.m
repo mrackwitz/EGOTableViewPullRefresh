@@ -26,10 +26,13 @@
 
 #import "RefreshTableHeaderView.h"
 #import "PullTableSideView+Protected.h"
-#import "NSDate+LastUpdatedTime.h"
+//#import "NSDate+LastUpdatedTime.h"
+#import "TTTTimeIntervalFormatter.h"
 
 
 @implementation RefreshTableHeaderView
+
+static TTTTimeIntervalFormatter* timeIntervalFormatter;
 
 @synthesize lastUpdatedLabel;
 
@@ -75,7 +78,11 @@
 		date = [self.delegate pullTableSideViewDataSourceLastUpdated:self];
 	}
     if (date) {
-        lastUpdatedLabel.text = date.describeTimeIntervalSinceNowAsTimeSinceLastUpdate;
+        if (!timeIntervalFormatter) {
+            timeIntervalFormatter = [TTTTimeIntervalFormatter new];
+            timeIntervalFormatter.usesIdiomaticDeicticExpressions = YES;
+        }
+        lastUpdatedLabel.text = [timeIntervalFormatter stringForTimeIntervalFromDate:NSDate.date toDate:date];
     } else {
         lastUpdatedLabel.text = nil;
     }
