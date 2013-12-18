@@ -197,8 +197,13 @@
         return wasActive;
     }
     if (isActive) {
-        // If not already active, start animation
-        [sideView pullTableViewStartAnimating:self];
+        if (self.hidesOnLoading) {
+            [sideView pullTableViewDataSourceDidFinishedLoading:self];
+        } else {
+            // If not already active, start animation
+            [sideView pullTableViewStartAnimating:self];
+        }
+       
         return YES;
     } else {
         // If was active and finished, stop animation
@@ -310,6 +315,12 @@
 
 - (NSDate *)pullTableSideViewDataSourceLastUpdated:(PullTableSideView *)view {
     return self.pullLastRefreshDate;
+}
+
+- (void)setHidesOnLoading:(BOOL)hidesOnLoading {
+    _hidesOnLoading = hidesOnLoading;
+    self.refreshView.hidesOnDragEnd = hidesOnLoading;
+    self.loadMoreView.hidesOnDragEnd = hidesOnLoading;
 }
 
 @end
