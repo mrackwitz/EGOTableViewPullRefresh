@@ -50,18 +50,16 @@
         label.shadowOffset     = CGSizeMake(0.0f, 1.0f);
         label.backgroundColor  = [UIColor clearColor];
         label.textAlignment    = NSTextAlignmentCenter;
-        [self addSubview:label];
+        //[self addSubview:label];
         statusLabel = label;
         
         // Config Arrow Image
         CALayer* layer         = [[CALayer alloc] init];
-        layer.frame            = CGRectMake(25.0f, midY - 20.0f, 30.0f, 55.0f);
+        layer.frame            = CGRectMake(0, midY - 20.0f, self.width, 55.0f);
         layer.contentsGravity  = kCAGravityCenter;
-        #if _IPHONE_OS_VERSION_MAX_ALLOWED >= 40000
-            if ([UIScreen.mainScreen respondsToSelector:@selector(scale)]) {
-                 layer.contentsScale = [UIScreen.mainScreen scale];
-            }
-        #endif
+        if ([UIScreen.mainScreen respondsToSelector:@selector(scale)]) {
+            layer.contentsScale = [UIScreen.mainScreen scale];
+        }
         [self.layer addSublayer:layer];
         arrowLayer = layer;
         
@@ -105,10 +103,11 @@
             statusLabel.text  = NSLocalizedStringFromTable(@"Release to refresh", @"PullTableViewLan", @"Release to refresh status");
             
             // Show arrow rotated by 180 degrees
-            [CATransaction begin];
+           /* [CATransaction begin];
             [CATransaction setAnimationDuration:FLIP_ANIMATION_DURATION];
             arrowLayer.opacity    = 1.0f;
-            [CATransaction commit];
+            [CATransaction commit];*/
+            arrowLayer.opacity    = 1.0f;
             break;
             
         case PullTableStateNormal:
@@ -116,10 +115,10 @@
             
             // Hide activity view
             [activityView stopAnimating];
-            [CATransaction begin];
+           /* [CATransaction begin];
             [CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions]; 
             arrowLayer.opacity    = 0.0f;
-            [CATransaction commit];
+            [CATransaction commit];*/
             break;
             
         case PullTableStateLoading:
@@ -146,7 +145,9 @@
 - (void)setBackgroundColor:(UIColor *)newBackgroundColor textColor:(UIColor *)newTextColor arrowImage:(UIImage *)newArrowImage {
     self.backgroundColor    = newBackgroundColor ? newBackgroundColor    : DEFAULT_BACKGROUND_COLOR;
     statusLabel.textColor   = newTextColor       ? newTextColor          : DEFAULT_TEXT_COLOR;
-    arrowLayer.contents     = (id)(newArrowImage ? newArrowImage.CGImage : DEFAULT_ARROW_IMAGE.CGImage);
+    if (newArrowImage) {
+        arrowLayer.contents = (id)newArrowImage.CGImage;
+    }    
     
     statusLabel.shadowColor = [statusLabel.textColor colorWithAlphaComponent:DEFAULT_SHADOW_ALPHA];
 }
@@ -167,6 +168,8 @@
             [self scrollView:scrollView setContentInsetSideTo:offset];
             
         } else if (scrollView.isDragging) {
+            arrowLayer.opacity = ((0.7f / PULL_AREA_HEIGHT) * -offset) - 0.5f;
+            NSLog(@"%f", arrowLayer.opacity);
             if (!isLoading) {
                 if (state == PullTableStatePulling && offset > -PULL_TRIGGER_HEIGHT && offset < 0) {
                     [self setState:PullTableStateNormal];
