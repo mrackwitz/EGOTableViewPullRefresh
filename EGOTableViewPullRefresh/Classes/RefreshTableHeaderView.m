@@ -49,8 +49,8 @@ static TTTTimeIntervalFormatter* timeIntervalFormatter;
 		label.font             = [UIFont systemFontOfSize:12.0f];
 		label.shadowOffset     = CGSizeMake(0.0f, 1.0f);
 		label.backgroundColor  = [UIColor clearColor];
-		label.textAlignment    = UITextAlignmentCenter;
-		[self addSubview:label];
+		label.textAlignment    = NSTextAlignmentCenter;
+		//[self addSubview:label];
 		lastUpdatedLabel = label;
         
         // Move arrowLayer
