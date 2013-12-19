@@ -42,24 +42,24 @@
         isLoading = NO;
         
         CGFloat midY = self.innerViewsCenterY;
-        
+
         // Config Status Updated Label
         UILabel* label         = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, midY - 10.0f, self.frame.size.width, 20.0f)];
         label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         label.font             = [UIFont boldSystemFontOfSize:13.0f];
         label.shadowOffset     = CGSizeMake(0.0f, 1.0f);
         label.backgroundColor  = [UIColor clearColor];
-        label.textAlignment    = UITextAlignmentCenter;
+        label.textAlignment    = NSTextAlignmentCenter;
         [self addSubview:label];
         statusLabel = label;
         
         // Config Arrow Image
         CALayer* layer         = [[CALayer alloc] init];
         layer.frame            = CGRectMake(25.0f, midY - 20.0f, 30.0f, 55.0f);
-        layer.contentsGravity  = kCAGravityResizeAspect;
+        layer.contentsGravity  = kCAGravityCenter;
         #if _IPHONE_OS_VERSION_MAX_ALLOWED >= 40000
             if ([UIScreen.mainScreen respondsToSelector:@selector(scale)]) {
-                layer.contentsScale = [UIScreen.mainScreen scale];
+                 layer.contentsScale = [UIScreen.mainScreen scale];
             }
         #endif
         [self.layer addSublayer:layer];
@@ -107,30 +107,18 @@
             // Show arrow rotated by 180 degrees
             [CATransaction begin];
             [CATransaction setAnimationDuration:FLIP_ANIMATION_DURATION];
-            arrowLayer.hidden    = NO;
-            arrowLayer.transform = CATransform3DMakeRotation([self rotationForState:aState], 0.0f, 0.0f, 1.0f);
+            arrowLayer.opacity    = 1.0f;
             [CATransaction commit];
             break;
             
         case PullTableStateNormal:
             statusLabel.text = NSLocalizedStringFromTable(@"Pull down to refresh", @"PullTableViewLan", @"Pull down to refresh status");
             
-            const CATransform3D arrowLayerTransform = CATransform3DMakeRotation([self rotationForState:aState], 0.0f, 0.0f, 1.0f);
-            
-            if (state == PullTableStatePulling) {
-                // Rotate arrow with specific duration
-                [CATransaction begin];
-                [CATransaction setAnimationDuration:FLIP_ANIMATION_DURATION];
-                arrowLayer.transform = arrowLayerTransform;
-                [CATransaction commit];
-            }
-            
-            // Hide activity view and show arrow
+            // Hide activity view
             [activityView stopAnimating];
             [CATransaction begin];
             [CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions]; 
-            arrowLayer.hidden    = NO;
-            arrowLayer.transform = arrowLayerTransform;
+            arrowLayer.opacity    = 0.0f;
             [CATransaction commit];
             break;
             
@@ -141,13 +129,13 @@
             [activityView startAnimating];
             [CATransaction begin];
             [CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions]; 
-            arrowLayer.hidden = YES;
+            arrowLayer.opacity    = 0.0f;
             [CATransaction commit];
             break;
             
         case PullTableStateDisabled:
             statusLabel.text    = nil;
-            arrowLayer.hidden   = YES;
+            arrowLayer.opacity    = 0.0f;
             [activityView stopAnimating];
             break;
     }
@@ -220,7 +208,11 @@
         if ([delegate respondsToSelector:@selector(pullTableSideViewDidTrigger:)]) {
             [delegate pullTableSideViewDidTrigger:self];
         }
-        [self pullTableViewStartAnimating:scrollView];
+        if (self.hidesOnDragEnd) {
+            [self pullTableViewDataSourceDidFinishedLoading:scrollView];
+        } else {
+            [self pullTableViewStartAnimating:scrollView];
+        }
     }
 }
 

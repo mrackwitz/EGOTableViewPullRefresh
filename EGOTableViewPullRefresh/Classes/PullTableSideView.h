@@ -33,7 +33,7 @@
 #define DEFAULT_TEXT_COLOR                [UIColor colorWithRed:87.0/255.0 green:108.0/255.0 blue:137.0/255.0 alpha:1.0]
 #define DEFAULT_ACTIVITY_INDICATOR_STYLE  UIActivityIndicatorViewStyleGray
 #define DEFAULT_SHADOW_ALPHA              0.2f
-#define FLIP_ANIMATION_DURATION           0.18f
+#define FLIP_ANIMATION_DURATION           0.5f
 #define PULL_AREA_HEIGHT                  60.0f
 #define PULL_TRIGGER_HEIGHT               (PULL_AREA_HEIGHT + 5.0f)
 #define PULL_SHOW_DURATION                0.2f
@@ -66,6 +66,7 @@ typedef enum {
 
 @property(nonatomic, assign) NSObject<PullTableSideViewDelegate>* delegate;
 @property(nonatomic, assign) PullTableState state;
+@property(nonatomic, assign) BOOL hidesOnDragEnd;
 
 - (void)pullTableViewDidScroll:(UIScrollView *)scrollView;
 - (void)pullTableViewWillBeginDragging:(UIScrollView *)scrollView;

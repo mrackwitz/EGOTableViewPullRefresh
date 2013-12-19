@@ -82,6 +82,8 @@
 @property (nonatomic, assign) BOOL pullTableIsRefreshingEnabled;
 @property (nonatomic, assign) BOOL pullTableIsLoadingMoreEnabled;
 
+@property(nonatomic, assign) BOOL hidesOnLoading;
+
 // Delegate
 @property (nonatomic, assign) IBOutlet id<PullTableViewDelegate> pullDelegate;
 
